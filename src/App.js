@@ -4,19 +4,21 @@ import Products from './Pages/Products';
 import ProductDetail from './Pages/ProductDetail';
 import Header from './Components/Header';
 import Cart from './Pages/Cart';
-import ItemCard from './Components/ItemCard';
-
+import { useState } from 'react';
+import { CartContext } from './Context/CartContext';
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState(""); 
   return (
     <>
-    <Header/>
-    {/* <ItemCard/> */}
-    <Routes>
-      <Route path='/' element={<Products/>}/>
-      <Route path='/productdetail' element={<ProductDetail/>}/>
-      <Route path='/cart' element={<Cart/>}/>
-    </Routes>
+      <CartContext>
+        <Header query={searchQuery} setQuery={setSearchQuery}/>
+        <Routes>
+          <Route path='/' element={<Products  query={searchQuery} setQuery={setSearchQuery}/>}/>
+          <Route path='/productDetail/:id' element={<ProductDetail />} />
+          <Route path='/cart' element={<Cart/>}/>
+        </Routes>
+      </CartContext>
     </>
   );
 }

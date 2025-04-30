@@ -1,10 +1,11 @@
-import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import React, { useState,useContext } from "react";
+import { MyContext } from "../Context/CartContext";
 import "./Header.css";
 
-function Header() {
 
-  const [query, setQuery] = useState("");
+function Header({query, setQuery}) {
+  const{cartItem, AddToCart} = useContext(MyContext)
   return (
     <>
       <nav className="navbar navbar-light bg-light">
@@ -14,14 +15,14 @@ function Header() {
 
         <div className="searchbar">
           <form className="form-inline">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={(e)=>(setQuery(e.target.value))}/>
+            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={query} onChange={(e)=>(setQuery(e.target.value))}/>
           </form>
         </div>
 
         <div>
           <Link to = "/cart">
           <i className="bi bi-cart3"></i>
-          <span>0</span>
+          <span>{cartItem.length}</span>
           </Link>
         </div>
       </nav>

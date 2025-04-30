@@ -1,44 +1,50 @@
-import{useState,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import './Products.css';
 import ProductAPI from '../Services/ProductAPI';
 import ItemCard from '../Components/ItemCard';
 
-
-function Products() {
-
+function Products({ query, setQuery }) {
   const [productList, setProductList] = useState([]);
+
   useEffect(() => {
-
-    async function fetchProduct(){
-
-      const product =  await ProductAPI.FetchAllProducts();
-      setProductList(product);
-      console.log(product);
-
+    async function searchProduct() {
+      if (query.length > 0) {  // Only search if query exists
+        const product = await ProductAPI.FetchBySearchQuery(query);
+        setProductList(product);
+        console.log(product);
+      } else {
+        const product = await ProductAPI.FetchAllProducts();
+        setProductList(product);
+      }
     }
+    searchProduct();
+  }, [query]);
 
-    fetchProduct();
+  if (productList.length === 0) {
+    return (
+      <p>Loading.....</p>
+    )
+  }
 
-   
-  }, [])
-  
   return (
     <>
-    <div>
-      {productList.map((product)=>(
-        
-        <ItemCard 
-            key={product.id}  // Always add key when mapping
-            image={product.image}
-            title={product.title}
-            price={product.price}
-        />
-
-      ))}
-    </div>
-   
+      <div>
+        {productList.length === 0 ? (
+          <p>No Products Found</p>
+        ) : (
+          productList.map((product) => (
+            <ItemCard
+              key={product.id}
+              id={product.id}
+              image={product.image}
+              title={product.title}
+              price={product.price}
+            />
+          ))
+        )}
+      </div>
     </>
   )
 }
 
-export default Products
+export default Products;

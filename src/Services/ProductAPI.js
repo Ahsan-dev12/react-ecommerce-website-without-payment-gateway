@@ -17,7 +17,7 @@ const  ProductAPI = {
  FetchBySearchQuery : async(query) => {
   
     const req = await fetch(`https://fakestoreapi.com/products`);
-    const res = req.json();
+    const res = await req.json();
     return res.filter((product)=> product.title.toLowerCase().includes(query));
     
   }
