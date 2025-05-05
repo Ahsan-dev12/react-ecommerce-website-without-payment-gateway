@@ -1,7 +1,7 @@
 import React, { useContext, useEffect,useState } from "react";
 import "./Cart.css";
 import { MyContext } from "../Context/CartContext";
-import ProductAPI from '../Services/ProductAPI';
+import './Cart.css';
 
 function Cart() {
   const { IncreaseQuantity, DecreaseQuantity, cartItem, ClearCart, SubTotalFunc, TotalSum } = useContext(MyContext);
@@ -40,10 +40,13 @@ function Cart() {
           </tbody>
         </table>
         
-        <h3>Total : {TotalSum()}Rs</h3>
-        <button type="button" className="btn btn-primary" onClick={ClearCart}>
+        <div id="totalDiv">
+        <button id="btn" type="button" className="btn btn-primary" onClick={ClearCart}>
          All Remove <i className="bi bi-cart3"></i>
         </button>
+        <h3 id="totalTxt">Total : {TotalSum()}Rs</h3>
+        </div>
+        
       </div>
     </>
   );

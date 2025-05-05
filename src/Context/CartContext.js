@@ -67,7 +67,7 @@ function CartContext({children}) {
     
     const findProduct = cartItem.find(item => item.id === productId);
     if(findProduct){
-      return findProduct.price*findProduct.quantity;
+      return  Math.round(findProduct.price*findProduct.quantity);
     }
 
   };
@@ -78,7 +78,7 @@ function CartContext({children}) {
     const total = cartItem.reduce((acc, item) => {
       return acc + item.price * item.quantity;
     }, 0);
-    return total;
+    return Math.round(total);
   };
   
 

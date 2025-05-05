@@ -21,7 +21,7 @@ function Header({query, setQuery}) {
 
         <div>
           <Link to = "/cart">
-          <i className="bi bi-cart3"></i>
+          <i className="bi bi-cart3" id='icon'></i>
           <span>{cartItem.length}</span>
           </Link>
         </div>

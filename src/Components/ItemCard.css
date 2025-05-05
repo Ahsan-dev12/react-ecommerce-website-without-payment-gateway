@@ -1,0 +1,42 @@
+.card{
+    
+    width:250px !important;
+    height: 330px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+img{
+    margin:15px;
+    width:190px !important;
+    height:170px !important;
+}
+
+.card-text{
+
+    font-size: 12px;
+    font-weight: bold;
+
+}
+.card-title{
+
+    font-size: 12px;
+    color:black !important;
+    text-decoration:underline;
+    
+   
+}
+
+
+#btn {
+    
+    font-size: 10px;
+    cursor: pointer;
+    background-color: black;
+    border: 1px solid #e6e3e3;
+
+}
+

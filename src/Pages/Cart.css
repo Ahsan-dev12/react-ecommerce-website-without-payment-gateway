@@ -1,0 +1,18 @@
+#btn {
+    
+    font-size: 10px;
+    cursor: pointer;
+    background-color: black;
+    border: 1px solid #e6e3e3;
+
+}
+
+#totalDiv{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+#totalTxt{
+    font-size: 20px;
+}

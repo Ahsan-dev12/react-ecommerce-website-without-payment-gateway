@@ -3,6 +3,7 @@ import './Products.css';
 import ProductAPI from '../Services/ProductAPI';
 import ItemCard from '../Components/ItemCard';
 
+
 function Products({ query, setQuery }) {
   const [productList, setProductList] = useState([]);
 
@@ -28,20 +29,27 @@ function Products({ query, setQuery }) {
 
   return (
     <>
-      <div>
-        {productList.length === 0 ? (
-          <p>No Products Found</p>
-        ) : (
-          productList.map((product) => (
-            <ItemCard
-              key={product.id}
-              id={product.id}
-              image={product.image}
-              title={product.title}
-              price={product.price}
-            />
-          ))
-        )}
+      <div >
+      
+         <div class="container text-center">
+           <div class="row" id="section">
+             {productList.length === 0 ? (
+              <p>No Products Found</p>) :
+               ( productList.map((product) => (
+                <div class="col" id="productrow">
+                  <ItemCard
+                       key={product.id}
+                       id={product.id}
+                       image={product.image}
+                       title={product.title}
+                       price={product.price}
+                   />
+             </div>
+                  ))
+               )}
+            </div>
+          </div>
+
       </div>
     </>
   )

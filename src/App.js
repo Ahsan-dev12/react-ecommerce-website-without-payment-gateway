@@ -10,7 +10,7 @@ import { CartContext } from './Context/CartContext';
 function App() {
   const [searchQuery, setSearchQuery] = useState(""); 
   return (
-    <>
+    <div id='section'>
       <CartContext>
         <Header query={searchQuery} setQuery={setSearchQuery}/>
         <Routes>
@@ -19,7 +19,7 @@ function App() {
           <Route path='/cart' element={<Cart/>}/>
         </Routes>
       </CartContext>
-    </>
+    </div>
   );
 }
 
